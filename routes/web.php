@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\TestController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,9 +18,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/', function () {
-//     return view('folder1/index');
-// });
+// DB test
+Route::get('/test', [TestController::class, 'index']);
+Route::get('/test/write', [TestController::class, 'write']);
+Route::post('/test/write', [TestController::class, 'save']);
+Route::get('/test/show/{id}', [TestController::class, 'show']);
+Route::get('/test/edit/{id}', [TestController::class, 'edit']);
+Route::put('/test/editProcess', [TestController::class, 'editProcess']);
+Route::delete('/test/delete/{id}', [TestController::class, 'destroy']);
+// Vue test
+// Route::get('/app', [TestController::class, 'app']);
 
 Route::get('/index2', function () {
     return view('folder2/index');
